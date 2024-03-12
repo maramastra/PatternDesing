@@ -3,15 +3,16 @@ package com.kreitek.pets;
 import com.kreitek.pets.controllers.CatController;
 import com.kreitek.pets.controllers.ControllerFactory;
 import com.kreitek.pets.controllers.DogController;
+import com.kreitek.pets.infraestructure.bd.Logger;
+import java.util.Locale;
 import java.util.Scanner;
-
 public class PetApp {
-
+   private static Logger logger= Logger.getInstance();
     // TODO Logger declaration
-
     public static void main (String[] args) {
         ControllerFactory controllerFactory = new ControllerFactory();
         boolean end = false;
+            logger.debug("Pet app has been initiated");
         System.out.println("Pet app has been initiated"); // TODO Logger
         while (!end) {
             String command = waitForNewCommand();
@@ -58,6 +59,7 @@ public class PetApp {
                 System.out.println("Bad command error");
             }
         }
+        logger.debug("Pet app has been ended");
         System.out.println("Pet app has been ended"); // TODO Logger
     }
 

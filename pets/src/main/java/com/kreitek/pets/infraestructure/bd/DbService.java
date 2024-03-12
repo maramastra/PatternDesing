@@ -9,11 +9,12 @@ import java.util.List;
 public class DbService {
     private static volatile DbService instance = null;
 
+    Logger logger= Logger.getInstance();
     // TODO Logger declaration
     private List<Cat> cats = new ArrayList<>();
     private List<Dog> dogs = new ArrayList<>();
 
-    private DbService() {
+    private  DbService() { ///que nadie pueda crear una instancia
         if (instance != null) {
             throw new RuntimeException("Usage getInstance() method to create");
         }
@@ -32,20 +33,24 @@ public class DbService {
 
     public void addNewDog(Dog dog) {
         dogs.add(dog);
+        logger.debug("BdService.Dog added");
         // TODO logger.debug("BdService.Dog added");
     }
     public void addNewCat(Cat cat) {
         cats.add(cat);
+        logger.debug("BdService.Cat added");
         // TODO logger.debug("BdService.Cat added");
     }
 
     public List<Cat> getCats() {
+        logger.debug("BdService.Get " + cats.size() + " cats");
         // TODO logger.debug("BdService.Get " + cats.size() + " cats);
         return new ArrayList<>(cats);
     }
 
     public List<Dog> getDogs() {
-        // TODO logger.debug("BdService.Get " + cats.size() + " dogs);
+        logger.debug("BdService.Get " + cats.size() + " dogs");
+        // TODO logger.debug("BdService.Get " + cats.size() + " dogs");
         return new ArrayList<>(dogs);
     }
 }
